@@ -9,7 +9,7 @@ Zachary McNellis (zmcnell ~AT~ clemson.edu), 2015-01-06
 
 from python_ast import Python_Ast
 from cpp_ast import Cpp_Ast
-from lxml import etree
+from xml.etree import ElementTree as etree
 from GAST import GAST
 import clang.cindex
 from ast import *
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     # write ast to xml file
     outFile = open(outFileName, "w")
     outFile.write("<?xml version=\"1.0\"?>\n")
-    outFile.write(etree.tostring(gast.getRoot(), pretty_print=True))
+    outFile.write(etree.tostring(gast.getRoot()))
     outFile.close()
 
     print "Done."

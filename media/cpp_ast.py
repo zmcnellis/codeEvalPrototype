@@ -1,4 +1,4 @@
-from lxml import etree
+from xml.etree import ElementTree as etree
 from GAST import GAST
 import clang.cindex
 
