@@ -12,6 +12,8 @@ angular.module('BuildCtrl', []).controller('BuildController', function($scope, $
 
   $scope.modes = {'C++': 'c_cpp', 'Python': 'python'};
   $scope.user.mode = $scope.modes["C++"];
+  $scope.terminal_output = "$ ";
+  $scope.buttonDisabled = false;
 
 
   // The ui-ace option
@@ -31,6 +33,27 @@ angular.module('BuildCtrl', []).controller('BuildController', function($scope, $
   };
 
 
+$scope.execute = function() {
+
+  $scope.buttonDisabled = true;
+
+  $http( {
+    method : 'Post',
+    url : '/execute',
+    data : $scope.user
+  }).success(function (data, status, headers, config) {
+        $scope.terminal_output = "$ "+data.replace(/(?:\r\n|\r|\n)/g, '\n$ ');
+        $scope.buttonDisabled = false;
+    }).error(function (data, status, headers, config) {
+        $scope.terminal_output = "$ "+data.replace(/(?:\r\n|\r|\n)/g, '\n$ ');
+        $scope.buttonDisabled = false;
+    });
+
+    // $location.path("/");
+
+  return false;
+};
+
 $scope.submit = function() {
 
 	$scope.buttonDisabled = true;
@@ -41,8 +64,10 @@ $scope.submit = function() {
 		data : $scope.user
 	}).success(function (data, status, headers, config) {
         alert(data);
+        $scope.buttonDisabled = false;
     }).error(function (data, status, headers, config) {
         alert("Incorrect");
+        $scope.buttonDisabled = false;
     });
 
     // $location.path("/");

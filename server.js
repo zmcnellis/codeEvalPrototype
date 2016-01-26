@@ -39,9 +39,19 @@ app.post('/submit', bodyParser.json(), function(req, res) {
         return res.sendStatus(400);
     }
 
+    var myResponse = "";
+
     // console.log(req.body);
     var comments = req.body.comments;
-    fs.writeFile(__dirname+"/media/test.cpp", comments, function(err) {
+    var mode = req.body.mode;
+    var extension = ".cpp";
+    if (mode == "c_cpp") {
+        extension = ".cpp";
+    }
+    else {
+        extension = ".py";
+    }
+    fs.writeFile(__dirname+"/media/test"+extension, comments, function(err) {
         if (err) {
             return err;
         }
@@ -64,26 +74,118 @@ app.post('/submit', bodyParser.json(), function(req, res) {
     }
 
     function runProgram() {
-        exec("./media/test", 
-            function puts(error, stdout, stderr) { 
-                console.log(stdout);
-                checkOutput(stdout);
-            }
-        );
+        if (mode == "c_cpp") {
+            exec("./media/test", 
+                function puts(error, stdout, stderr) { 
+                    console.log(stdout);
+                    checkOutput(stdout);
+                }
+            );
+        }
+        else {
+            exec("python "+__dirname+"/media/test.py", 
+                function puts(error, stdout, stderr) { 
+                    console.log(stdout);
+                    checkOutput(stdout);
+                }
+            );
+        }
     }
 
     function compile() {
-        exec("g++ "+__dirname+"/media/test.cpp -o "+__dirname+"/media/test", 
-            function puts(error, stdout, stderr) { 
-                if (stderr == "") {
-                    console.log("Compile success");
-                    runProgram();
-                    // console.log("."+__dirname+"/media/test");
+        if (mode == "c_cpp") {
+            exec("g++ "+__dirname+"/media/test.cpp -o "+__dirname+"/media/test", 
+                function puts(error, stdout, stderr) { 
+                    if (stderr == "") {
+                        console.log("Compile success");
+                        myResponse += "g++ myprogram.cpp -o myprogram\n";
+                        runProgram();
+                        // console.log("."+__dirname+"/media/test");
+                    }
+                    else {
+                        console.log("Compile error");
+                        res.send("g++ myprogram.cpp -o myprogram\n"+stderr);
+                    }
                 }
-                else {
-                    console.log("Compile error");
+            );
+        }
+        else {
+            runProgram();
+        }
+    }
+});
+
+app.post('/execute', bodyParser.json(), function(req, res) {
+    if (!req) {
+        return res.sendStatus(400);
+    }
+
+    var myResponse = "";
+
+    // console.log(req.body);
+    var comments = req.body.comments;
+    var mode = req.body.mode;
+    var extension = ".cpp";
+    if (mode == "c_cpp") {
+        extension = ".cpp";
+    }
+    else {
+        extension = ".py";
+    }
+    fs.writeFile(__dirname+"/media/test"+extension, comments, function(err) {
+        if (err) {
+            return err;
+        }
+        else {
+            console.log("The file was saved!");
+            compile();
+        }
+        
+    });
+
+    function runProgram() {
+        if (mode == "c_cpp") {
+            exec("./media/test", 
+                function puts(error, stdout, stderr) { 
+                    console.log(stdout);
+                    myResponse += "./myprogram\n"
+                    myResponse += stdout;
+                    res.send(myResponse);
                 }
-            }
-        );
+            );
+        }
+        else {
+            exec("python "+__dirname+"/media/test.py", 
+                function puts(error, stdout, stderr) { 
+                    console.log(stdout);
+                    myResponse += "python myprogram\n"
+                    myResponse += stderr;
+                    myResponse += stdout;
+                    res.send(myResponse);
+                }
+            );
+        }
+    }
+
+    function compile() {
+        if (mode == "c_cpp") {
+            exec("g++ "+__dirname+"/media/test.cpp -o "+__dirname+"/media/test", 
+                function puts(error, stdout, stderr) { 
+                    if (stderr == "") {
+                        console.log("Compile success");
+                        myResponse += "g++ myprogram.cpp -o myprogram\n";
+                        runProgram();
+                        // console.log("."+__dirname+"/media/test");
+                    }
+                    else {
+                        console.log("Compile error");
+                        res.send("g++ myprogram.cpp -o myprogram\n"+stderr);
+                    }
+                }
+            );
+        }
+        else {
+            runProgram();
+        }
     }
 });
