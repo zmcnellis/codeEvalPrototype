@@ -125,8 +125,7 @@ $scope.logout = function() {
 })
 
 .controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', '$sce', 'metrics', 'topMccabe', 'topHalstead', function ($scope, $modalInstance, $sce, metrics, topMccabe, topHalstead) {
-    //$scope.metrics = $sce.trustAsHtml(metrics.replace(/(?:\r\n|\r|\n)/g, '<br/>'));
-    $scope.metrics = metrics;
+    $scope.metrics = $sce.trustAsHtml(metrics.replace(/(?:\r\n|\r|\n)/g, '<br/>'));
     $scope.topMccabe = topMccabe;
     $scope.topHalstead = topHalstead;
 
