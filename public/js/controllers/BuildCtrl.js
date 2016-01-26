@@ -1,5 +1,5 @@
 
-angular.module('BuildCtrl', []).controller('BuildController', function($scope, $http, $location, $firebaseObject) {
+angular.module('BuildCtrl', []).controller('BuildController', function($scope, $http, $location, $firebaseObject, $modal) {
 
     var ref = new Firebase("https://coderx.firebaseio.com");
     var authData = ref.getAuth();
@@ -33,6 +33,31 @@ angular.module('BuildCtrl', []).controller('BuildController', function($scope, $
   };
 
 
+  $scope.items = ['item1', 'item2', 'item3'];
+
+  $scope.open = function () {
+      var modalInstance = $modal.open({
+          templateUrl: 'myModalContent.html',
+          controller: 'ModalInstanceCtrl',
+          resolve: {
+              items: function () {
+              return $scope.items;
+              }
+          }
+      });
+
+      modalInstance.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+      }, function () {
+          // $log.info('Modal dismissed at: ' + new Date());
+      });
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+
+
 $scope.execute = function() {
 
   $scope.buttonDisabled = true;
@@ -63,10 +88,17 @@ $scope.submit = function() {
 		url : '/submit',
 		data : $scope.user
 	}).success(function (data, status, headers, config) {
-        alert(data);
+        // alert(data.answer);
         $scope.buttonDisabled = false;
+        if (data.answer == "correct") {
+          $scope.error = false;
+          $scope.open();
+        }
+        else {
+          $scope.error = true;
+        }
     }).error(function (data, status, headers, config) {
-        alert("Incorrect");
+        $scope.error = true;
         $scope.buttonDisabled = false;
     });
 
@@ -80,4 +112,20 @@ $scope.logout = function() {
     $location.path("login");
 };
 
-});
+})
+
+.controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', 'items', function ($scope, $modalInstance, items) {
+    $scope.items = items;
+    $scope.selected = {
+        item: $scope.items[0]
+    };
+
+    $scope.ok = function () {
+        $modalInstance.close($scope.selected.item);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+}]);
+

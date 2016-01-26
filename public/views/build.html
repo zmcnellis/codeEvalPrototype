@@ -37,7 +37,7 @@
 	<div class="col-md-8">
 		<h2 class="fs-title">STEP 2</h2>
 		<h3 class="fs-subtitle">Enter Code Here</h3>
-		<div ng-if="error === true"><red><small>Please make sure to enter all required fields.</small></red></div>
+		<div ng-if="error === true"><red><small>Incorrect. Please try again.</small></red></div>
 	
 <section>
   <div id="comment" ui-ace="aceOption" ng-model="user.comments"></div>
@@ -57,7 +57,7 @@
 
 		<div class="btn-group pull-right" role="group">
 		<button class="btn btn-info" ng-disabled="!user.comments || buttonDisabled" type="button" ng-click="execute()"/>Run
-		<button class="btn btn-success" ng-disabled="!user.comments || buttonDisabled" type="button" name="submit" class="submit action-button" value="Submit" ng-click="submit()"/>Submit
+		<button class="btn btn-success" ng-disabled="!user.comments || buttonDisable"da ntype="button" name="submit" class="submit action-button" value="Submit" ng-click="submit()"/>Submit
 		</div>
 
     <!-- TERMINAL OUTPUT -->
@@ -72,3 +72,18 @@
 </form>
 
 </section>
+
+<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Congratulations!</h3>
+        </div>
+        <div class="modal-body">
+        	<h4>You did it! You got the correct answer.</h4><br/>
+        	<h4>Here's how you did:</h4><br/><br/>
+            <!--Selected: <b>{{ selected.item }}</b>-->
+            <h4>Top Score:</h4>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        </div>
+    </script>

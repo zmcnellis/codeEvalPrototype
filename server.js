@@ -65,11 +65,11 @@ app.post('/submit', bodyParser.json(), function(req, res) {
     function checkOutput(stdout) {
         if (stdout == "Hello World\n") {
             console.log("yay!!!");
-            res.send("Correct");
+            res.send({"answer":"correct"});
         }
         else {
             console.log("nay!!!");
-            res.send("Incorrect");
+            res.send({"answer":"incorrect"});
         }
     }
 
@@ -98,13 +98,12 @@ app.post('/submit', bodyParser.json(), function(req, res) {
                 function puts(error, stdout, stderr) { 
                     if (stderr == "") {
                         console.log("Compile success");
-                        myResponse += "g++ myprogram.cpp -o myprogram\n";
                         runProgram();
                         // console.log("."+__dirname+"/media/test");
                     }
                     else {
                         console.log("Compile error");
-                        res.send("g++ myprogram.cpp -o myprogram\n"+stderr);
+                        res.send({"answer":"incorrect"});
                     }
                 }
             );
