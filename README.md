@@ -4,7 +4,7 @@ This is the repo for the Coderx website.
 
 ## Installation
 ```sh
-$ git clone [git-repo-url] 
+$ git clone https://github.com/zmcnellis/codeEvalPrototype.git
 $ cd codeEvalPrototype
 $ npm install
 $ bower install
