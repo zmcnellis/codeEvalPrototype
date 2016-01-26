@@ -6,6 +6,7 @@
     "body-parser": "~1.4.2",
     "method-override": "~2.0.2",
     "express-mailer": "~0.3.0",
-    "jade": "~1.11.0"
+    "jade": "~1.11.0",
+    "pip": "0.0.1"
   }
 }
