@@ -9,11 +9,11 @@ tar -zxf llvm-3.4.src.tar.gz
 tar -zxf clang-3.4.src.tar.gz
 tar -zxf compiler-rt-3.4.src.tar.gz
 
-mv clang-3.4.src llvm-3.4.src/tools/clang
-mv compiler-rt-3.4.src llvm-3.4.src/projects/compiler-rt
+mv clang-3.4 llvm-3.4/tools/clang
+mv compiler-rt-3.4 llvm-3.4/projects/compiler-rt
 
 mkdir build
 cd build
-../llvm-3.4.src/configure --prefix=/app/vendor --disable-docs
+../llvm-3.4/configure --prefix=/app/vendor --disable-docs
 make -sj4
 make install
