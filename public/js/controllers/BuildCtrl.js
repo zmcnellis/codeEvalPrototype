@@ -33,15 +33,25 @@ angular.module('BuildCtrl', []).controller('BuildController', function($scope, $
   };
 
 
-  $scope.items = ['item1', 'item2', 'item3'];
-
-  $scope.open = function () {
+  $scope.open = function (metricArg) {
       var modalInstance = $modal.open({
           templateUrl: 'myModalContent.html',
           controller: 'ModalInstanceCtrl',
           resolve: {
-              items: function () {
-              return $scope.items;
+              metrics: function () {
+              return metricArg;
+              },
+              topMccabe: function () {
+                if ($scope.user.lesson == "Hello World")
+                  return 0;
+                else
+                  return 2;
+              },
+              topHalstead: function () {
+                if ($scope.user.lesson == "Hello World")
+                  return 0;
+                else
+                  return 2;
               }
           }
       });
@@ -92,7 +102,7 @@ $scope.submit = function() {
         $scope.buttonDisabled = false;
         if (data.answer == "correct") {
           $scope.error = false;
-          $scope.open();
+          $scope.open(data.metrics);
         }
         else {
           $scope.error = true;
@@ -114,18 +124,14 @@ $scope.logout = function() {
 
 })
 
-.controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', 'items', function ($scope, $modalInstance, items) {
-    $scope.items = items;
-    $scope.selected = {
-        item: $scope.items[0]
-    };
+.controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', '$sce', 'metrics', 'topMccabe', 'topHalstead', function ($scope, $modalInstance, $sce, metrics, topMccabe, topHalstead) {
+    $scope.metrics = $sce.trustAsHtml(metrics.replace(/(?:\r\n|\r|\n)/g, '<br/>'));
+    $scope.topMccabe = topMccabe;
+    $scope.topHalstead = topHalstead;
 
     $scope.ok = function () {
-        $modalInstance.close($scope.selected.item);
-    };
-
-    $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
+
 }]);
 

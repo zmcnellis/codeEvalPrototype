@@ -62,10 +62,43 @@ app.post('/submit', bodyParser.json(), function(req, res) {
         
     });
 
+
+    function computeMetrics() {
+        exec("python "+__dirname+"/media/mccabe.py "+__dirname+"/media/output.xml", 
+            function puts(error, stdout, stderr) { 
+                res.send({"answer":"correct", "metrics":stdout});
+            }
+        );
+    }
+
+
     function checkOutput(stdout) {
         if (stdout == "Hello World\n") {
-            console.log("yay!!!");
-            res.send({"answer":"correct"});
+            if (mode == "c_cpp") {
+                exec("python media/astXML.py "+__dirname+"/media/test.cpp "+__dirname+"/media/output.xml", 
+                    function puts(error, stdout, stderr) { 
+                        if (stdout == "Done.\n") {
+                            computeMetrics();
+                        }
+                        else {
+                            res.send({"answer":"correct"});
+                        }
+                    }
+                );
+            }
+            else if (mode == "python") {
+                exec("python media/astXML.py "+__dirname+"/media/test.py "+__dirname+"/media/output.xml", 
+                    function puts(error, stdout, stderr) { 
+                        console.log(stderr);
+                        if (stdout == "Done.\n") {
+                            computeMetrics();
+                        }
+                        else {
+                            res.send({"answer":"correct"});
+                        }
+                    }
+                );
+            }
         }
         else {
             console.log("nay!!!");
