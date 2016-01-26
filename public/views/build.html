@@ -1,0 +1,68 @@
+<section class="container-top" id="top">
+  <div class="row">
+  <div class="col col-xs-6">
+  <h1><a href="/">Code&#8478;</a></h1>
+  </div>
+  <div class="col col-xs-6">
+  <p class="pull-right" style="padding: 30px 25px 0px 0px"><a href="/">Profile</a>&nbsp; | &nbsp;<a ng-click="logout()">Logout</a></p>
+  </div>
+  </div>
+
+</section> <!-- /container full -->
+
+
+<section class="container-code">
+
+<form>
+<div class="row">
+	<div class="col-md-4">
+		<h2>STEP 1</h2>
+		<h3>Choose Input Language</h3>  
+		<select class="form-control" ng-model="user.mode" ng-options="k for (k,v) in modes" ng-change="modeChanged()"></select>
+
+		<h3>Select An Excersie</h3>
+		<select class="form-control" ng-model="user.lesson" ng-init="user.lesson = 'Hello World'">
+			<option>Hello World</option>
+			<option>Swap Two Numbers</option>
+		</select>
+
+
+	<h3>Description</h3>
+	<p ng-if="user.lesson=='Hello World'">Write a program that prints the statement "Hello World\n" to stdout.<br/><br/>This is your attempt at this exercise.</p>
+	<p ng-if="user.lesson=='Swap Two Numbers'">Write function swap that accepts two integers by reference. When the function is complete, the values of the two parameters are exchaged.<br/><br/>This is your attempt at this exercise.</p>
+
+	</div>
+
+
+	<div class="col-md-8">
+		<h2 class="fs-title">STEP 2</h2>
+		<h3 class="fs-subtitle">Enter Code Here</h3>
+		<div ng-if="error === true"><red><small>Please make sure to enter all required fields.</small></red></div>
+	
+<section>
+  <div id="comment" ui-ace="aceOption" ng-model="user.comments"></div>
+
+
+</section>	
+
+		<!--<textarea class="form-control" placeholder="Start coding here..." rows="13" id="comment" ng-model="user.comments"></textarea>-->
+
+		<br />
+
+    <div class="btn-group pull-left" role="group">
+      <a type="button" href="/" class="btn btn-warning" role="button">
+        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Home
+      </a>
+    </div>
+
+		<div class="btn-group pull-right" role="group">
+		<button class="btn btn-info" ng-disabled="!user.comments" type="button" ng-click="submit()"/>Run
+		<button class="btn btn-success" ng-disabled="!user.comments" type="button" name="submit" class="submit action-button" value="Submit" ng-click="submit()"/>Submit
+		</div>
+
+
+	</div>
+</div>
+</form>
+
+</section>

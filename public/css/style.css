@@ -1,0 +1,333 @@
+/* makes top section 100% height */
+html,body {
+  height:100%;
+  font-family:'Raleway', sans-serif;
+  background-color: #DDDDDD;
+  /*-webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px);*/
+}
+
+.ace_editor {
+  height: 400px;
+}
+
+/* top section landing page */
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  background:url(/images/website-background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color:#eee;
+  overflow:hidden;
+}
+
+.leader{
+  font-size:3em;
+  letter-spacing:.2em;
+}
+/* vertically align top section text */
+.v-center {
+  margin-top:30vh;
+}
+section.full-page {
+   width:100%;
+}
+
+.container-footer {
+  margin: 0 auto;
+  width: 100%;
+  background-color:#522D80; 
+  color:#eee;
+  overflow:hidden;
+}
+.HowWorksText{
+  text-align:center;
+}
+
+.footer-top {
+  background-color: #F66733;
+}
+
+.footer-middle {
+  background-color:#522D80; 
+}
+
+.icon-footer {
+  opacity: 0.4;
+}
+
+.container-top {
+  margin: 0 auto;
+  width: 100%;
+  color: #FFF;
+  background-color: grey;
+  font-family:'Raleway', sans-serif;
+  font-weight:100;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  overflow:hidden;
+}
+
+.container-top a {
+  color: #DDD;
+  text-decoration: none;
+}
+
+.container-top a:hover {
+  color: #304578;
+  text-decoration: none;
+}
+
+.icon-footer:hover {
+  opacity: 1.0;
+}
+
+.text-light {
+  color: #FFF;
+}
+
+.my-button {
+  background-color: #50B0A0;
+  border-radius: 0px;
+  border: 2px solid #FFF;
+  width:300px;
+  height:60px;
+}
+.hero-button {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0px;
+  border: 1px solid #FFF;
+  color: #FFF;
+  width:300px;
+  height:50px;
+}
+.hero-button:hover{
+  background-color: rgb(255, 255, 255);
+  color:navy;
+  font-weight:400;
+}
+.hero-button small {
+  vertical-align: middle;
+}
+
+
+.my-button p {
+  color: #FFF;
+  vertical-align: middle;
+}
+
+.my-button:hover {
+  background-color: #134F4B;
+  border: 2px solid #134F4B;
+}
+
+.btn-clear {
+  box-shadow: none !important;
+  -webkit-bow-shadow: none !important;
+  outline: none !important;
+}
+
+.btn-clear.active {
+  box-shadow: none !important;
+  -webkit-bow-shadow: none !important;
+  outline: none !important;
+}
+
+.btn-clear.focus {
+  box-shadow: none !important;
+  -webkit-bow-shadow: none !important;
+  outline: none !important;
+}
+
+.text-middle {
+  padding-top: 25px;
+  color: #FFF;
+  letter-spacing:.2em;
+}
+
+.call-action {
+  background-color: #DDDDDD;
+  display: block;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.padding-top {
+  padding-top: 30px;
+}
+
+.black-icon {
+  color: black;
+}
+
+.blue-icon {
+  color: #0BA574;
+}
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
+}
+
+.banner {
+  background-color: #555;
+}
+
+.container-code {
+  padding: 0 5% 0 5%;
+  font-family:'Raleway', sans-serif;
+  font-weight:100;
+  overflow:hidden;
+}
+
+.container-banner {
+  margin: 0 auto;
+  width: 100%;
+  color: #FFF;
+  background-color: grey;
+  font-family:'Raleway', sans-serif;
+  font-weight:100;
+  height: 20vh;
+  overflow:hidden;
+}
+.btn img{
+  fill:red;
+}
+
+
+.spacer {
+  height: 50px;
+}
+.btnRow{
+  /*padding:0 22% 0 22%;*/
+}
+.container-lg {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  overflow:hidden;
+  padding: 0px 5% 0px 5%;
+}
+
+.my-responsive {
+  margin: 0 auto;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+/* ABOUT Page */
+.teamFaces{
+  text-align:center;
+}
+.aboutHover{
+
+    background-color: lightgreen;
+    color:white;
+    width:200px;
+    padding-left:-10px;
+
+    transition: width 1s;
+    -moz-transition: width 1s; /* Firefox 4 */
+    -webkit-transition: width 1s; /* Safari and Chrome */
+    -o-transition: width 1s; /* Opera */
+    -ms-transition: width 1s; /* IE9 (maybe) */
+
+}
+
+.aboutHover:hover{
+    width:800px;
+}
+
+.footer-top a {
+  color: #DDD;
+  text-decoration: none;
+}
+
+.footer-top a:hover {
+  color: #304578;
+  text-decoration: none;
+}
+
+.footer-top .fa {
+  color: #DDD;
+}
+
+.footer-top .fa:hover {
+  color: #304578;
+  text-decoration: none;
+}
+
+.footer-middle a {
+  color: #DDD;
+  text-decoration: none;
+}
+
+.footer-middle a:hover {
+  color: #50B0A0;
+  text-decoration: none;
+}
+
+html, body {
+  height: 100%;
+}
+
+.form-bg:not(#progressbar) {
+  display: block;
+  overflow: auto;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #CCC;
+}
+
+red {
+  color: red;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

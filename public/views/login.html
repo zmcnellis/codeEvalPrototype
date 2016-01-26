@@ -1,0 +1,32 @@
+<section class="container-top" id="top">
+  <a href="/"><h1>Code&#8478;</h1></a>
+
+
+</section> <!-- /container full -->
+
+<section class="container" style="padding:5% 10% 5% 10%">
+    <div class="row text-center">
+    <div class="col col-xs-10 col-xs-offset-1" style="text-align: center;"><img src="images/computer.gif" style="width: 200px;">
+    </div>
+    </div>
+
+    <div class="row row-center">
+    <div class="col col-xs-10 col-xs-offset-1" style="text-align: center;">
+    <p class="assertive text-center">{{errorText}}</p>
+    </div>
+    </div>
+
+
+      <form class="form-signin" name="register">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" ng-model="login.username" name="name" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" ng-model="login.password" required>
+
+        <button ng-disabled="register.name.$error.required || register.password.$error.required" ng-click="signin()" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+
+
+</section>
