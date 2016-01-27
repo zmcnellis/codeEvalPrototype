@@ -1,2 +1,2 @@
 <?xml version="1.0"?>
-<gast><TRANSLATION_UNIT /></gast>
+<gast><TRANSLATION_UNIT><CALL_EXPR col_offset="0" lineno="1"><STRING_LITERAL col_offset="6" lineno="1" /></CALL_EXPR></TRANSLATION_UNIT></gast>

@@ -78,7 +78,8 @@ app.post('/submit', bodyParser.json(), function(req, res) {
                 exec("python media/astXML.py "+__dirname+"/media/test.cpp "+__dirname+"/media/output.xml", 
                     function puts(error, stdout, stderr) { 
                         if (stdout == "Done.\n") {
-                            computeMetrics();
+                            // computeMetrics();
+			    res.send({"answer":"correct", "metrics":"Not working right now =("});
                         }
                         else {
                             res.send({"answer":"correct"});
@@ -91,7 +92,8 @@ app.post('/submit', bodyParser.json(), function(req, res) {
                     function puts(error, stdout, stderr) { 
                         console.log(stderr);
                         if (stdout == "Done.\n") {
-                            computeMetrics();
+                            // computeMetrics();
+			    res.send({"answer":"correct", "metrics":"Not working right now =("});
                         }
                         else {
                             res.send({"answer":"correct"});
