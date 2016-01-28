@@ -66,6 +66,9 @@ app.post('/submit', bodyParser.json(), function(req, res) {
     function computeMetrics() {
         exec("python "+__dirname+"/media/mccabe.py "+__dirname+"/media/output.xml", 
             function puts(error, stdout, stderr) { 
+                console.log("I computed the metrics");
+                console.log(stdout);
+                console.log(stderr);
                 res.send({"answer":"correct", "metrics":stdout});
             }
         );
