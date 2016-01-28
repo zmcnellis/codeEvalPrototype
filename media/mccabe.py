@@ -8,7 +8,7 @@ Zachary McNellis (zmcnell ~AT~ clemson.edu), 2015-01-06
 
 import sys
 import time
-from lxml import etree
+from xml.etree import ElementTree as etree
 from StringIO import StringIO
 
 keywordOpList = ["IF_STMT", "WHILE_STMT", "FOR_STMT", "CASE_STMT"]
