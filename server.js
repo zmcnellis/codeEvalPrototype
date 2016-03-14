@@ -44,6 +44,7 @@ app.post('/submit', bodyParser.json(), function(req, res) {
     // console.log(req.body);
     var comments = req.body.comments;
     var mode = req.body.mode;
+    var lesson = req.body.lesson;
     var extension = ".cpp";
     if (mode == "c_cpp") {
         extension = ".cpp";
@@ -76,7 +77,15 @@ app.post('/submit', bodyParser.json(), function(req, res) {
 
 
     function checkOutput(stdout) {
-        if (stdout == "Hello World\n") {
+        var answers = [
+            "Hello World\n",
+            "233168\n",
+            "4613732\n",
+            "6857\n",
+            "906609\n",
+            "232792560\n"
+        ];
+        if (stdout == answers[parseInt(lesson)]) {
 	    // res.send({"answer":"correct", "metrics":"Not working right now =("});
             // return;
             if (mode == "c_cpp") {

@@ -39,16 +39,16 @@ angular.module('BuildCtrl', []).controller('BuildController', function($scope, $
           controller: 'ModalInstanceCtrl',
           resolve: {
               metrics: function () {
-              return metricArg;
+                return metricArg;
               },
               topMccabe: function () {
-                if ($scope.user.lesson == "Hello World")
+                if ($scope.user.lesson == "0")
                   return 0;
                 else
                   return 2;
               },
               topHalstead: function () {
-                if ($scope.user.lesson == "Hello World")
+                if ($scope.user.lesson == "0")
                   return 0;
                 else
                   return 2;
