@@ -94,10 +94,11 @@
         <div class="modal-body">
         	<h4>You did it! You got the correct answer.</h4><br/>
         	<h4>Here's how you did:</h4>
-        	<code ng-bind-html="metrics"></code>
+        	<code>Cyclomatic Complexity => {{mccabe}}</code><br/>
+        	<code>Halstead Difficulty => {{halstead}}</code>
         	<br/><br/>
-            <h4>Top Score:</h4>
-            <code>Cyclomatic Compleixty => {{topMccabe}}</code><br/>
+            <h4>Your Best Score:</h4>
+            <code>Cyclomatic Complexity => {{topMccabe}}</code><br/>
             <code>Halstead Difficulty => {{topHalstead}}</code>
         </div>
         <div class="modal-footer">

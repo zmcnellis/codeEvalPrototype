@@ -33,25 +33,60 @@ angular.module('BuildCtrl', []).controller('BuildController', function($scope, $
   };
 
 
-  $scope.open = function (metricArg) {
+  $scope.open = function (metricArg, mccabe, halstead) {
+    ref.once('value', function(snapshot) {
       var modalInstance = $modal.open({
           templateUrl: 'myModalContent.html',
           controller: 'ModalInstanceCtrl',
           resolve: {
               metrics: function () {
-                return metricArg;
+                var metric_output = [
+                  mccabe,
+                  halstead
+                ];
+                return metric_output;
               },
               topMccabe: function () {
-                if ($scope.user.lesson == "0")
-                  return 0;
-                else
-                  return 2;
+                
+                    if (snapshot.child("users").hasChild(authData.uid)) {
+                      var currentVal = parseInt(snapshot.child("users").child(authData.uid).child("mccabe"+$scope.user.lesson).val());
+                      if (currentVal == -1 || parseInt(mccabe) < currentVal) {
+                        var foo = {};
+                        var index = "mccabe"+$scope.user.lesson;
+                        foo[index] = parseInt(mccabe);
+                        ref.child("users").child(authData.uid).update(foo);
+                        return parseInt(mccabe);
+                      }
+                      else {
+                        return currentVal;
+                      }
+                    }
+                    else {
+                        console.log("Caught Error: cannot find user data");
+                        return "ERROR";
+                    }
+
               },
               topHalstead: function () {
-                if ($scope.user.lesson == "0")
-                  return 0;
-                else
-                  return 2;
+
+                    if (snapshot.child("users").hasChild(authData.uid)) {
+                      var currentVal = parseFloat(snapshot.child("users").child(authData.uid).child("halstead"+$scope.user.lesson).val());
+                      if (currentVal == -1 || parseFloat(halstead) < currentVal) {
+                        var foo = {};
+                        var index = "halstead"+$scope.user.lesson;
+                        foo[index] = parseFloat(halstead);
+                        ref.child("users").child(authData.uid).update(foo);
+                        return parseFloat(halstead);
+                      }
+                      else {
+                        return currentVal;
+                      }
+                    }
+                    else {
+                        console.log("Caught Error: cannot find user data");
+                        return "ERROR";
+                    }
+
               }
           }
       });
@@ -61,6 +96,7 @@ angular.module('BuildCtrl', []).controller('BuildController', function($scope, $
       }, function () {
           // $log.info('Modal dismissed at: ' + new Date());
       });
+    });
   };
 
   $scope.toggleAnimation = function () {
@@ -102,7 +138,7 @@ $scope.submit = function() {
         $scope.buttonDisabled = false;
         if (data.answer == "correct") {
           $scope.error = false;
-          $scope.open(data.metrics);
+          $scope.open(data.metrics, data.mccabe, data.halstead);
         }
         else {
           $scope.error = true;
@@ -125,7 +161,8 @@ $scope.logout = function() {
 })
 
 .controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', '$sce', 'metrics', 'topMccabe', 'topHalstead', function ($scope, $modalInstance, $sce, metrics, topMccabe, topHalstead) {
-    $scope.metrics = $sce.trustAsHtml(metrics.replace(/(?:\r\n|\r|\n)/g, '<br/>'));
+    $scope.mccabe = metrics[0];
+    $scope.halstead = metrics[1];
     $scope.topMccabe = topMccabe;
     $scope.topHalstead = topHalstead;
 

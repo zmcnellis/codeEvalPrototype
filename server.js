@@ -70,7 +70,11 @@ app.post('/submit', bodyParser.json(), function(req, res) {
                 console.log("I computed the metrics");
                 console.log(stdout);
                 console.log(stderr);
-                res.send({"answer":"correct", "metrics":stdout});
+                var mccabe = stdout.substring(0, stdout.indexOf(" "));
+                var halstead = stdout.substring(stdout.indexOf(" ")+1, stdout.length);
+                console.log("mccabe: "+mccabe);
+                console.log("halstead: "+halstead);
+                res.send({"answer":"correct", "metrics":stdout, "mccabe":mccabe, "halstead":halstead});
             }
         );
     }

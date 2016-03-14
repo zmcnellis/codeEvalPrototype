@@ -71,9 +71,4 @@ if __name__ == "__main__":
     eta_2 = max(len(randSet), 1)
     difficulty = (eta_1 / 2.0) * (N_2 / eta_2)
 
-    print "Cyclomatic Complexity => "+str(branch_count)
-    print "distinct operators:\t"+str(eta_1)
-    print "distinct operands:\t"+str(eta_2)
-    print "total operators:\t"+str(N_1)
-    print "total operands: \t"+str(N_2)
-    print "Halstead Difficulty =>\t"+str(difficulty)
+    print str(branch_count)+" "+str(difficulty)
