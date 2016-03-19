@@ -87,6 +87,142 @@ angular.module('BuildCtrl', []).controller('BuildController', function($scope, $
                         return "ERROR";
                     }
 
+              },
+              avgMccabe: function () {
+                var stats = {};
+                if ($scope.user.mode == "python") {
+                  if ($scope.user.lesson == 0) {
+                    stats["avg"] = 1.0;
+                    stats["min"] = 1.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 1) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 2) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 3) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 4) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 7.0;
+                  }
+                  else if ($scope.user.lesson == 5) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                }
+                else {
+                  if ($scope.user.lesson == 0) {
+                    stats["avg"] = 1.5;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 1) {
+                    stats["avg"] = 2.5;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 2) {
+                    stats["avg"] = 2.5;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 3) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 7.0;
+                  }
+                  else if ($scope.user.lesson == 4) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 5) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                }
+                return stats;
+              },
+              avgHalstead: function () {
+                var stats = {};
+                if ($scope.user.mode == "python") {
+                  if ($scope.user.lesson == 0) {
+                    stats["avg"] = 1.5;
+                    stats["min"] = 0.2;
+                    stats["max"] = 5.1;
+                  }
+                  else if ($scope.user.lesson == 1) {
+                    stats["avg"] = 1.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 3.5;
+                  }
+                  else if ($scope.user.lesson == 2) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.2;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 3) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 4) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 5) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                }
+                else {
+                  if ($scope.user.lesson == 0) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 1) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 2) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 3) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 4) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                  else if ($scope.user.lesson == 5) {
+                    stats["avg"] = 2.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 5.0;
+                  }
+                }
+                return stats;
               }
           }
       });
@@ -160,11 +296,17 @@ $scope.logout = function() {
 
 })
 
-.controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', '$sce', 'metrics', 'topMccabe', 'topHalstead', function ($scope, $modalInstance, $sce, metrics, topMccabe, topHalstead) {
+.controller('ModalInstanceCtrl', [ '$scope', '$modalInstance', '$sce', 'metrics', 'topMccabe', 'topHalstead', 'avgMccabe', 'avgHalstead', function ($scope, $modalInstance, $sce, metrics, topMccabe, topHalstead, avgMccabe, avgHalstead) {
     $scope.mccabe = metrics[0];
     $scope.halstead = metrics[1];
     $scope.topMccabe = topMccabe;
     $scope.topHalstead = topHalstead;
+    $scope.avgMccabe = avgMccabe["avg"];
+    $scope.maxMccabe = avgMccabe["max"];
+    $scope.minMccabe = avgMccabe["min"];
+    $scope.avgHalstead = avgHalstead["avg"];
+    $scope.maxHalstead = avgHalstead["max"];
+    $scope.minHalstead = avgHalstead["min"];
 
     $scope.ok = function () {
         $modalInstance.dismiss('cancel');
