@@ -26,12 +26,14 @@ def evalCPP(inFileName, gast):
 
     # generate ast
     gast.ast_visit(translation_unit.cursor)
+    gast.fix_ops()
     #program = gast.get_info(translation_unit.cursor)
     #gast.write_xml(program)
 
 def evalPython(inFileName, fstr, gast):
     # generate ast
     gast.ast_visit(parse(fstr, filename=inFileName)) 
+    gast.fix_ops()
 
 if __name__ == '__main__':
     # get input and output file names from console
@@ -46,6 +48,7 @@ if __name__ == '__main__':
     # get file extension
     fileType = inFileName[inFileName.rfind('.')+1:]
     root = etree.Element("gast")
+    root.set("filename", inFileName)
    
     gast = None
  

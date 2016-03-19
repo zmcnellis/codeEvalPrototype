@@ -13,6 +13,21 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'LoginController'
 		})
 
+		.when('/signup', {
+			templateUrl: 'views/signup.html',
+			controller: 'SignupController'
+		})
+
+		.when('/reset', {
+			templateUrl: 'views/reset.html',
+			controller: 'ResetController'
+		})
+
+		.when('/changePassword', {
+			templateUrl: 'views/changePassword.html',
+			controller: 'ChangeController'
+		})
+
 		.when('/developers', {
 			templateUrl: 'views/developers.html',
 			controller: 'DevelopersController'	

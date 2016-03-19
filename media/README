@@ -1,0 +1,10 @@
+NAME: Zachary McNellis
+DATE: 1/05/2015
+
+********************* GENERIC ABSTRACT SYNTAX TREE *****************************
+(1) python astXML.py
+(2) supply input file
+(3) supply output file
+
+***************************** DESCRIPTION **************************************
+Convert either a Python or C++ program to a generic AST.

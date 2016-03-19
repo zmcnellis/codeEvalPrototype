@@ -57,7 +57,6 @@ app.post('/submit', bodyParser.json(), function(req, res) {
             return err;
         }
         else {
-            console.log("The file was saved!");
             compile();
         }
         
@@ -67,7 +66,6 @@ app.post('/submit', bodyParser.json(), function(req, res) {
     function computeMetrics() {
         exec("python "+__dirname+"/media/mccabe.py "+__dirname+"/media/output.xml", 
             function puts(error, stdout, stderr) { 
-                console.log("I computed the metrics");
                 console.log(stdout);
                 console.log(stderr);
                 var mccabe = stdout.substring(0, stdout.indexOf(" "));
@@ -119,7 +117,6 @@ app.post('/submit', bodyParser.json(), function(req, res) {
             }
         }
         else {
-            console.log("nay!!!");
             res.send({"answer":"incorrect"});
         }
     }
@@ -187,7 +184,6 @@ app.post('/execute', bodyParser.json(), function(req, res) {
             return err;
         }
         else {
-            console.log("The file was saved!");
             compile();
         }
         
@@ -222,7 +218,6 @@ app.post('/execute', bodyParser.json(), function(req, res) {
             exec("g++ "+__dirname+"/media/test.cpp -o "+__dirname+"/media/test", 
                 function puts(error, stdout, stderr) { 
                     if (stderr == "") {
-                        console.log("Compile success");
                         myResponse += "g++ myprogram.cpp -o myprogram\n";
                         runProgram();
                         // console.log("."+__dirname+"/media/test");
