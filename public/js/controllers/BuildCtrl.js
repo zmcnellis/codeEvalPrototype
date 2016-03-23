@@ -92,66 +92,65 @@ angular.module('BuildCtrl', []).controller('BuildController', function($scope, $
                 var stats = {};
                 if ($scope.user.mode == "python") {
                   if ($scope.user.lesson == 0) {
-                    stats["avg"] = 1.0;
-                    stats["min"] = 1.0;
-                    stats["max"] = 5.0;
+                    stats["avg"] = 0.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 0.0;
                   }
                   else if ($scope.user.lesson == 1) {
                     stats["avg"] = 2.0;
                     stats["min"] = 0.0;
-                    stats["max"] = 5.0;
+                    stats["max"] = 6.0;
                   }
                   else if ($scope.user.lesson == 2) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
-                    stats["max"] = 5.0;
+                    stats["avg"] = 2.26;
+                    stats["min"] = 1.0;
+                    stats["max"] = 6.0;
                   }
                   else if ($scope.user.lesson == 3) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
-                    stats["max"] = 5.0;
+                    stats["avg"] = 4.3;
+                    stats["min"] = 2.0;
+                    stats["max"] = 10.0;
                   }
                   else if ($scope.user.lesson == 4) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
-                    stats["max"] = 7.0;
+                    stats["avg"] = 5.23;
+                    stats["min"] = 3.0;
+                    stats["max"] = 17.0;
                   }
                   else if ($scope.user.lesson == 5) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
-                    stats["max"] = 5.0;
-                  }
+                    stats["avg"] = 5.92;
+                    stats["min"] = 1.0;
+                    stats["max"] = 20.0
                 }
                 else {
                   if ($scope.user.lesson == 0) {
-                    stats["avg"] = 1.5;
+                    stats["avg"] = 0.0;
                     stats["min"] = 0.0;
-                    stats["max"] = 5.0;
+                    stats["max"] = 0.0;
                   }
                   else if ($scope.user.lesson == 1) {
-                    stats["avg"] = 2.5;
+                    stats["avg"] = 2.21;
                     stats["min"] = 0.0;
-                    stats["max"] = 5.0;
+                    stats["max"] = 4.0;
                   }
                   else if ($scope.user.lesson == 2) {
-                    stats["avg"] = 2.5;
+                    stats["avg"] = 2.59;
                     stats["min"] = 0.0;
                     stats["max"] = 5.0;
                   }
                   else if ($scope.user.lesson == 3) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
-                    stats["max"] = 7.0;
+                    stats["avg"] = 6.36;
+                    stats["min"] = 2.0;
+                    stats["max"] = 11.0;
                   }
                   else if ($scope.user.lesson == 4) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
-                    stats["max"] = 5.0;
+                    stats["avg"] = 5.68;
+                    stats["min"] = 3.0;
+                    stats["max"] = 10.0;
                   }
                   else if ($scope.user.lesson == 5) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
-                    stats["max"] = 5.0;
+                    stats["avg"] = 4.38;
+                    stats["min"] = 1.0;
+                    stats["max"] = 14.0;
                   }
                 }
                 return stats;
@@ -160,65 +159,65 @@ angular.module('BuildCtrl', []).controller('BuildController', function($scope, $
                 var stats = {};
                 if ($scope.user.mode == "python") {
                   if ($scope.user.lesson == 0) {
-                    stats["avg"] = 1.5;
-                    stats["min"] = 0.2;
-                    stats["max"] = 5.1;
+                    stats["avg"] = 0.0;
+                    stats["min"] = 0.0;
+                    stats["max"] = 0.0;
                   }
                   else if ($scope.user.lesson == 1) {
-                    stats["avg"] = 1.0;
-                    stats["min"] = 0.0;
-                    stats["max"] = 3.5;
+                    stats["avg"] = 2.65;
+                    stats["min"] = 0.5;
+                    stats["max"] = 5.67;
                   }
                   else if ($scope.user.lesson == 2) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.2;
-                    stats["max"] = 5.0;
+                    stats["avg"] = 2.72;
+                    stats["min"] = 1.0;
+                    stats["max"] = 5.71;
                   }
                   else if ($scope.user.lesson == 3) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
-                    stats["max"] = 5.0;
+                    stats["avg"] = 4.44;
+                    stats["min"] = 1.0;
+                    stats["max"] = 8.4;
                   }
                   else if ($scope.user.lesson == 4) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
-                    stats["max"] = 5.0;
+                    stats["avg"] = 3.49;
+                    stats["min"] = 1.0;
+                    stats["max"] = 9.15;
                   }
                   else if ($scope.user.lesson == 5) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
-                    stats["max"] = 5.0;
+                    stats["avg"] = 4.26;
+                    stats["min"] = 1.8;
+                    stats["max"] = 7.8;
                   }
                 }
                 else {
                   if ($scope.user.lesson == 0) {
-                    stats["avg"] = 2.0;
+                    stats["avg"] = 0.0;
                     stats["min"] = 0.0;
-                    stats["max"] = 5.0;
+                    stats["max"] = 0.0;
                   }
                   else if ($scope.user.lesson == 1) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
+                    stats["avg"] = 5.57;
+                    stats["min"] = 3.0;
                     stats["max"] = 5.0;
                   }
                   else if ($scope.user.lesson == 2) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
+                    stats["avg"] = 5.53;
+                    stats["min"] = 3.0;
                     stats["max"] = 5.0;
                   }
                   else if ($scope.user.lesson == 3) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
+                    stats["avg"] = 9.59;
+                    stats["min"] = 3.0;
                     stats["max"] = 5.0;
                   }
                   else if ($scope.user.lesson == 4) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
+                    stats["avg"] = 13.03;
+                    stats["min"] = 4.0;
                     stats["max"] = 5.0;
                   }
                   else if ($scope.user.lesson == 5) {
-                    stats["avg"] = 2.0;
-                    stats["min"] = 0.0;
+                    stats["avg"] = 5.44;
+                    stats["min"] = 2.0;
                     stats["max"] = 5.0;
                   }
                 }
