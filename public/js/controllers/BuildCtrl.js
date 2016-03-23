@@ -119,7 +119,7 @@ angular.module('BuildCtrl', []).controller('BuildController', function($scope, $
                   else if ($scope.user.lesson == 5) {
                     stats["avg"] = 5.92;
                     stats["min"] = 1.0;
-                    stats["max"] = 20.0
+                    stats["max"] = 20.0;
                 }
                 else {
                   if ($scope.user.lesson == 0) {
